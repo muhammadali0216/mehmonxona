@@ -8,6 +8,7 @@
                <th>Mijozning Familyasi </th>
                <th>Band qilin muddat</th>
                <th>TEL Raqmi</th>
+               <th>Qabul qilish</th>
                <th>Delete</th>
            </tr>
        </thead>
@@ -20,7 +21,12 @@
                    <td>{{ $message->forstday }}dan {{ $message->lastday }} gacha</td>
                    <td>{{ $message->phone }}</td>
                    <td>
-                       <a wire:click="deletemessage({{ $message->id }})" class="btn btn-danger" > O'chirish </a>          
+                        @if (empty($message->check))
+                           <a href="{{ route('zakaz', $message)}}"  class="btn btn-info">Qbul qilish</a>    
+                        @endif
+                   </td>
+                   <td>
+                       <a wire:click="deletemessage({{ $message->id }})" class="btn btn-danger" > O'chirish </a>      
                    </td>
                </tr>
            @endforeach
@@ -28,6 +34,6 @@
    </table>
    {{ $messages->links() }}
    @else 
-    <h2>Xozircha Buyurtma mavjud emas</h2>
+    <h2>Xozircha Murojatlar mavjud emas</h2>
    @endif
 </div>

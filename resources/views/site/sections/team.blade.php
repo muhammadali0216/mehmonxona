@@ -5,7 +5,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Meet Our Team</h2>
+                <h2 class="title-a">{{__('words.team')}} </h2>
               </div>
             </div>
           </div>
@@ -14,20 +14,20 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-7.jpg" alt="" class="img-d img-fluid">
+                <img src="assets/img/rano.jpg" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Margaret Sotillo
-                        <br> Escala</a>
+                      <a href="agent-single.html" class="link-two">Ra'no Qodirova
+                        <br> Abrorovna</a>
                     </h3>
                   </div>
                 </div>
                 <div class="card-body-d">
                   <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                    Mijozlarni qabul qilish bo'lim boshlig'i
                   </p>
                   <div class="info-agents color-a">
                     <p>
@@ -70,20 +70,20 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-6.jpg" alt="" class="img-d img-fluid">
+                <img src="assets/img/menejer.jpg" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Stiven Spilver
-                        <br> Darw</a>
+                      <a href="agent-single.html" class="link-two">Abrorjon Olimov
+                        <br> Yoqubovich</a>
                     </h3>
                   </div>
                 </div>
                 <div class="card-body-d">
                   <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                    Mijozlarga xizmat ko'rsatish bo'limining boshlig'i.
                   </p>
                   <div class="info-agents color-a">
                     <p>
@@ -131,20 +131,20 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
+                <img src="assets/img/xizmat.jpg" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Emma Toledo
-                        <br> Cascada</a>
+                      <a href="agent-single.html" class="link-two">Sobirjon Soliyev
+                        <br> Sayidovich</a>
                     </h3>
                   </div>
                 </div>
                 <div class="card-body-d">
                   <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                    Maxsus xizmatlar va nazoratchillar bolimining bshlig'i.
                   </p>
                   <div class="info-agents color-a">
                     <p>

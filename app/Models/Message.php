@@ -14,6 +14,8 @@ class Message extends Model
         'forstday',
         'lastday',
         'phone',
-        'room'
+        'room',
+        'pasport',
+        'check',
     ];
 }

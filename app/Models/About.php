@@ -10,8 +10,12 @@ class About extends Model
     use HasFactory;
     protected $fillable=[
         'photo',
-        'title',
-        'description',
+        'titleUz',
+        'titleEn',
+        'titleRu',
+        'descriptionUz',
+        'descriptionEn',
+        'descriptionRu',
         'slug'
     ];
 }

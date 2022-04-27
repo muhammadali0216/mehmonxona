@@ -9,22 +9,21 @@ class Room extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'photo1',
-        'photo2',
-        'photo3',
         'price',
-        'area',
-        'room_id',
-        'bed_id',
         'checkbox',
         'number',
-        'title',
-        'body'
+        'titleUz',
+        'titleEn',
+        'titleRu',
+        'bodyUz',
+        'bodyEn',
+        'bodyRu',
+        'slug'
     ];
-    public function roomnumber(){
-        return $this->belongsTo(RoomNumber::class, 'room_id');
+    public function category(){
+        return $this->belongsToMany(Category_item::class, 'product_filters');
     }
-    public function bednumber(){
-        return $this->belongsTo(BedNumber::class, 'bed_id');
+    public function photos(){
+        return $this->hasMany(Photo::class, 'room_id');
     }
 }

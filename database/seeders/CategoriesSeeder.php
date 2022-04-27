@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Catigory;
+use App\Models\Category;
 class CategoriesSeeder extends Seeder
 {
     /**
@@ -22,7 +22,7 @@ class CategoriesSeeder extends Seeder
             ]
             ];
         foreach($data as $items ){
-            $model = new Catigory();
+            $model = new Category();
             $model->name = $items['name'];
             $model->save();
         }

@@ -4,6 +4,9 @@ namespace App\Repositores;
 
 use App\Models\Room;
 use App\Repositores\Interfaces\RoomRepositoreInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Photo;
+
 
 class RoomRepositore implements RoomRepositoreInterface{
     public function all(){
@@ -11,27 +14,16 @@ class RoomRepositore implements RoomRepositoreInterface{
     }
     public function store($request){
         $data=$request->all();
-        if($request->file('photo1')){
-            $imag=$request->file('photo1');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo1']=$imag_name;
-        } 
-        if($request->file('photo2')){
-            $imag=$request->file('photo2');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo2']=$imag_name;
-        } 
-        if($request->file('photo3')){
-            $imag=$request->file('photo3');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo3']=$imag_name;
-        } 
-        $data['slug']=\Str::slug($request->price);
-
-        Room::create($data);
+        $data['slug']=\Str::slug($request->titleUz);
+        $room=Room::create($data);
+        $category=$request->category;
+        $photo=$request->photos;
+        $room->category()->attach($category);
+        foreach($photo as $imag){
+                $imag_name=time().$imag->getClientOriginalName();
+                $imag->move('assets/img/', $imag_name);
+                Photo::create(['room_id'=>$room->id, 'photos'=>$imag]);
+        }
         return true;
     }
     public function show($id){
@@ -40,34 +32,22 @@ class RoomRepositore implements RoomRepositoreInterface{
     public function update($request, $id){
         $data=$request->all();
         $old=Room::find($id);
-        if($request->file('photo1')){
-            $imag=$request->file('photo1');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo1']=$imag_name;
-        }else{
-            
-            $data['photo1']=$old->photo1;
+        $photo=$request->photos;
+        if($photo){
+            $old->photos()->delete('room_id', $id); 
+            foreach($photo as $imag){
+                    $imag_name=time().$imag->getClientOriginalName();
+                    $imag->move('assets/img/', $imag_name);
+                    Photo::create(['room_id'=>$id, 'photos'=>$imag_name]);
+            }
+           
         }
-        if($request->file('photo2')){
-            $imag=$request->file('photo2');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo2']=$imag_name;
-        }else{
-            
-            $data['photo2']=$old->photo2;
-        }
-        if($request->file('photo3')){
-            $imag=$request->file('photo3');
-            $imag_name=time().$imag->getClientOriginalName();
-            $imag->move('assets/img/', $imag_name);
-            $data['photo3']=$imag_name;
-        }else{
-            
-            $data['photo3']=$old->photo3;
-        }
-        $data['slug']=\Str::slug($request->price);
+        
+       $category=$request->category;
+       $old->category()->sync($category);
+        
+      
+        $data['slug']=\Str::slug($request->titleUz);
         if($request->checkbox==1){    
             return $old->update($data);
         }else{
@@ -80,7 +60,11 @@ class RoomRepositore implements RoomRepositoreInterface{
         
         
     }
+
     public function destroy($id){
+        $room=Room::find($id);
+        $room->category($id)->detach();        
+        $room->photos()->delete('room_id', $id);        
         return Room::destroy($id);
     }
 }

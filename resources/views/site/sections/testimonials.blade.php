@@ -5,15 +5,13 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Testimonials</h2>
+                <h2 class="title-a">{{ __('words.testimonials') }}</h2>
               </div>
             </div>
           </div>
         </div>
-
         <div id="testimonial-carousel" class="swiper">
           <div class="swiper-wrapper">
-
             <div class="carousel-item-a swiper-slide">
               <div class="testimonials-box">
                 <div class="row">
@@ -28,7 +26,7 @@
                     </div>
                     <div class="testimonials-content">
                       <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                        Comentaria. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
                         debitis hic ber quibusdam
                         voluptatibus officia expedita corpori.
                       </p>
@@ -41,7 +39,6 @@
                 </div>
               </div>
             </div><!-- End carousel item -->
-
             <div class="carousel-item-a swiper-slide">
               <div class="testimonials-box">
                 <div class="row">
@@ -69,10 +66,8 @@
                 </div>
               </div>
             </div><!-- End carousel item -->
-
           </div>
         </div>
         <div class="testimonial-carousel-pagination carousel-pagination"></div>
-
       </div>
     </section><!-- End Testimonials Section -->

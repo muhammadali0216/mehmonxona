@@ -16,8 +16,7 @@ class ProductFilters extends Migration
         Schema::create('product_filters', function (Blueprint $table) {
             $table->id();
             $table->integer('room_id');
-            $table->integer('catigory_id');
-            $table->integer('parent_id');
+            $table->integer('category_item_id');
             $table->timestamps();
         });
     }

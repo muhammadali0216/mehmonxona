@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AboutStoreRequest;
 use App\Models\About;
 use App\Repositores\Interfaces\AboutRepositoreInterface;
 use Illuminate\Http\Request;
@@ -42,9 +43,11 @@ class AboutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AboutStoreRequest $request)
     {
+      
         $this->AboutRepo->store($request);
+        
         return redirect('/admin/about');
     }
 
@@ -81,7 +84,15 @@ class AboutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {  
+        $request->validate([
+            'titleUz'=>'required',
+            'descriptionUz'=>'required',
+            'titleEn'=>'required',
+            'descriptionEn'=>'required',
+            'titleRu'=>'required',
+            'descriptionRu'=>'required',
+        ]);
         $this->AboutRepo->update($request, $id);
         return redirect('/admin/about');
     }

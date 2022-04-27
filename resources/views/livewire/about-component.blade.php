@@ -5,8 +5,12 @@
         <thead>
             <tr>
                 <th>Photo</th>
-                <th>Title</th>
-                <th>Description</th>
+                <th>Title UZ</th>
+                <th>Title EN</th>
+                <th>Title RU</th>
+                <th>DescriptionUZ</th>
+                <th>DescriptionEN</th>
+                <th>DescriptionRU</th>
                 <th> O'zgartirish</th>
                 <th>Delete</th>
             </tr>
@@ -16,11 +20,15 @@
                <tr>
                     <td>                
                         <div class="img-box-a">
-                            <img width="100px" src="/assets/img/{{ $info->photo }}" alt="Room" class="img-a img-fluid">
+                            <img width="100%" src="/assets/img/{{ $info->photo }}" alt="Room" class="img-a img-fluid">
                         </div>
                     </td>
-                    <td>{{ $info->title }}</td>
-                    <td>{{ $info->description }}</td>
+                    <td>{{ $info->titleUz }}</td>
+                    <td>{{ $info->titleEn }}</td>
+                    <td>{{ $info->titleRu }}</td>
+                    <td>{{ $info->descriptionUz }}</td>
+                    <td>{{ $info->descriptionEn }}</td>
+                    <td>{{ $info->descriptionRu }}</td>
                     <td>
                         <a href="{{ route('about.edit', $id=$info->id) }}"  class="btn btn-info">O'zgartirish </a>
                     </td>

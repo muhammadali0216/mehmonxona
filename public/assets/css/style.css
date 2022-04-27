@@ -95,6 +95,16 @@ a:hover {
   }
 }
 
+@media(max-width:770px) {
+  .asdasd {
+    align-items: center;
+  }
+  .widh{
+    height: 50%;
+    margin-left: 2px;
+  }
+}
+
 .text-brand {
   color: #000000;
   font-size: 2rem;
@@ -105,6 +115,26 @@ a:hover {
     font-size: 1.8rem;
   }
 }
+
+/* <div class="asdasd d-flex ">
+              <form class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{route('search')}}" method="GET" >
+                <div class="input-group">
+                    <input class="form-control" required  type="text" name="key" placeholder="{{ __('words.search') }}" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button style=" background-color : rgb(17, 173, 17) !important; border-color:rgb(17, 173, 17);:focus :
+                      outline: none; box-shadow: none; @media(max-width: 770px){display: block !important}" class="btn btn-primary " id="btnNavbarSearch" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+              </form>
+              <div class="dropdown show d-flex widh" >
+                <button class="btn btn-secondary dropdown-toggle text-dark p-md-auto" style="background-color:rgb(25, 190, 25)" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{ App::getLocale() }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"  >
+                  <a href="/lang/Uz" class="dropdown-item">Uz</a>
+                  <a class="dropdown-item" href="/lang/Ru">Ru</a>
+                  <a class="dropdown-item" href="/lang/En">Eng</a>
+                </div>
+              </div>
+        </div> */
 
 .color-a {
   text-decoration: none;
@@ -245,7 +275,7 @@ a:hover {
 
 /*------/ Space Padding /------*/
 .section-t8 {
-  padding-top: 8rem;
+   padding-top: 8rem; 
 }
 @media (max-width: 767px) {
   .section-t8 {
@@ -258,7 +288,7 @@ a:hover {
 }
 @media (max-width: 767px) {
   .section-t4 {
-    padding-top: 2rem;
+    padding-top: 0rem;
   }
 }
 
@@ -323,11 +353,27 @@ a:hover {
 .title-box-d .title-d:after {
   content: "";
   position: absolute;
-  width: 70px;
+  width: 120px;
   height: 4px;
   background-color: #2eca6a;
   bottom: 20px;
-  left: 0;
+  left: 45%;
+}
+.title-j::after{
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 4px;
+  background-color: #2eca6a;
+  bottom: 20px;
+  left: 0%;
+}
+
+
+@media(max-width: 430px){
+  .title-wrap.row .col-sm-12, .description{
+    padding: 0 2% !important;
+  }
 }
 
 /*------/ Display Table & Table Cell /------*/
@@ -584,6 +630,7 @@ a:hover {
   .navbar-default.navbar-trans .nav-item, .navbar-default.navbar-reduce .nav-item {
     margin-left: 15px;
   }
+
 }
 .navbar-default.navbar-trans .nav-link, .navbar-default.navbar-reduce .nav-link {
   font-size: 1.1rem;
@@ -995,17 +1042,22 @@ a:hover {
 @media (max-width: 767px) {
   .intro-single {
     padding-top: 9rem;
+    padding-bottom: 0 !important;  
   }
+  
 }
-.intro-single .title-single-box {
-  padding: 1rem 0 1rem 2rem;
-}
-.intro-single .title-single-box {
-  border-left: 3px solid #2eca6a;
+  .intro-single .title-single-box {
+    padding: 3rem  2rem 1rem;
+  }
+@media (max-width: 370px){
+  .intro-single .title-single-box {
+    padding: 8rem  2rem 1rem;
+  }
 }
 .intro-single .title-single-box .title-single {
   font-weight: 600;
   font-size: 2.2rem;
+
 }
 @media (min-width: 768px) {
   .intro-single .title-single-box .title-single {
@@ -1916,3 +1968,42 @@ footer .copyright-footer {
 footer .credits {
   font-size: 14px;
 }
+
+.yonma-yon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sarlavxa {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+}
+
+/* .xona-malumot {
+  width: 40%;
+} */
+
+/* .xona-informatsiya-row {
+  width: 100%;
+  
+}
+
+
+.xonta-infro-text {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.xonaning-informatsiyasi {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+ */

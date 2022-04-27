@@ -5,8 +5,12 @@
         <thead>
             <tr>
                <th>Rasim</th>
-                <th>Xizmat turi</th>
-                <th>Malumotlar</th>
+                <th>Xizmat turi UZ</th>
+                <th>Xizmat turi EN</th>
+                <th>Xizmat turi RU</th>
+                <th>Malumotlar UZ</th>
+                <th>Malumotlar EN</th>
+                <th>Malumotlar RU</th>
                 <th>O'zgartirish</th>
                 <th>Delete</th>
             </tr>
@@ -16,11 +20,15 @@
                 <tr>
                     <td>                
                       <div class="img-box-a">
-                        <img width="100px" src="/assets/img/{{ $service->photo }}" alt="service" class="img-a img-fluid">
+                        <img width="100%" src="/assets/img/{{ $service->photo }}" alt="service" class="img-a img-fluid">
                       </div>
                     </td>
-                    <td>{{ $service->title }}</td>
-                    <td>{{ $service->description }}</td>
+                    <td>{{ $service->titleUz }}</td>
+                    <td>{{ $service->titleEn }}</td>
+                    <td>{{ $service->titleRu }}</td>
+                    <td>{{ $service->descriptionUz }}</td>
+                    <td>{{ $service->descriptionEn }}</td>
+                    <td>{{ $service->descriptionRu }}</td>
                     <td>
                         <a href="{{ route('service.edit', $id=$service->id) }}"  class="btn btn-info"> O'zgartirish </a>
                     </td>
@@ -35,5 +43,5 @@
     @else
     <br>
     Xozircha xizmatlar mavjud emas !!!
-    @endif
+    @endif 
 </div>

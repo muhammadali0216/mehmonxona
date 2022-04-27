@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Catigory_item;
+use App\Models\Category_item;
 use Illuminate\Database\Seeder;
 
 class CategoryItemsSeeder extends Seeder
@@ -48,9 +48,9 @@ class CategoryItemsSeeder extends Seeder
 
             ];
         foreach($data as $items ){
-            $model = new Catigory_item();
+            $model = new Category_item();
             $model->name = $items['name'];
-            $model->catigory_id = $items['category_id'];
+            $model->category_id = $items['category_id'];
             $model->save();
         }
     }

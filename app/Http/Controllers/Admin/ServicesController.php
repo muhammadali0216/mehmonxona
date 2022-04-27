@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AboutStoreRequest;
 use App\Repositores\Interfaces\ServicesRepositoreInterface;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class ServicesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AboutStoreRequest $request)
     {
         $this->ServicesRepo->store($request);
         return redirect('/admin/service');
@@ -81,6 +82,15 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+
+            'titleUz'=>'required',
+            'descriptionUz'=>'required',
+            'titleEn'=>'required',
+            'descriptionEn'=>'required',
+            'titleRu'=>'required',
+            'descriptionRu'=>'required',
+        ]);
         $this->ServicesRepo->update($request, $id);
         return redirect('/admin/service');
     }

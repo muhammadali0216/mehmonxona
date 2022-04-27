@@ -10,55 +10,54 @@
     @csrf 
     <div class="col-sm-3">
       <label class="visually-hidden" for="number">Xona raqami</label>
-      <input type="text" name="number" class="form-control" id="number" value=" {{ $room->roomnumber->number }}">
+      <input type="text" name="number" class="form-control" id="number" value=" {{ $room->number }}">
+      @error('number')
+      <p class="qizil">{{ $message }}</p>
+      @enderror
     </div>
     <div class="col-sm-3">
-        <label class="visually-hidden" for="photo1">Rasim</label>
-        <input type="file" name="photo1" class="form-control" id="photo1">
-    </div>
-    <div class="col-sm-3">
-        <label class="visually-hidden" for="photo2">Rasim</label>
-        <input type="file" name="photo2" class="form-control" id="photo2">
-    </div>
-    <div class="col-sm-3">
-        <label class="visually-hidden" for="photo3">Rasim</label>
-        <input type="file" name="photo3" class="form-control" id="photo3">
+        <label class="visually-hidden" for="photos[]">Rasim</label>
+        <input type="file" name="photos[]" multiple class="form-control" id="photos[]">
     </div>
     <div class="col-sm-3">
       <label class="visually-hidden" for="price">Oylik ijara narxi</label>
       <input type="text" name="price" class="form-control" id="price" value=" {{ $room->price }}">
+      @error('price')
+      <p class="qizil">{{ $message }}</p>
+      @enderror
     </div>
     <div class="col-sm-3">
-      <label class="visually-hidden" for="price">Sarlavxa</label>
-      {{-- <input type="text" name="title" class="form-control" id="price" value=" {{ $room->title }}"> --}}
+      <label class="visually-hidden" for="price">Sarlavxa Ru</label>
+      <input type="text" name="titleUz" class="form-control" id="price" value=" {{ $room->titleUz }}">
+      <label class="visually-hidden" for="price">Sarlavxa EN</label>
+      <input type="text" name="titleEn" class="form-control" id="price" value=" {{ $room->titleEn }}">
+      <label class="visually-hidden" for="price">Sarlavxa Ru</label>
+      <input type="text" name="titleRu" class="form-control" id="price" value=" {{ $room->titleRu }}">
+      @error('titleUZ')
+      <p class="qizil">{{ $message }}</p>
+      @enderror
     </div>
     <div class="col-sm-3">
-      <label class="visually-hidden" for="price">Mlumotlar</label>
-      {{-- <input type="text" name="body" class="form-control" id="price" value=" {{ $room->body }}"> --}}
+      <label class="visually-hidden" for="price">Malumotlar Uz</label>
+      <input type="text" name="bodyUz" class="form-control" id="price" value=" {{ $room->bodyUz }}">
+      <label class="visually-hidden" for="price">Malumotlar EN</label>
+      <input type="text" name="bodyEn" class="form-control" id="price" value=" {{ $room->bodyEn }}">
+      <label class="visually-hidden" for="price">Malumotlar RU</label>
+      <input type="text" name="bodyRu" class="form-control" id="price" value=" {{ $room->bodyRu }}">
+      @error('bodyUZ')
+      <p class="qizil">{{ $message }}</p>
+      @enderror
     </div>
+    @foreach($categories as $items)
     <div class="col-sm-3">
-      <label class="visually-hidden" for="area">Maydoni</label>
-      <div class="input-group">
-        {{-- <input type="text" name="area" class="form-control" id="area" value=" {{ $room->catigory->name }}"> --}}
-        <div class="input-group-text">m<sup>2</sup> </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <label class="visually-hidden" for="room_id">Xonalar soni</label>
-      <select class="form-select" name="room_id" id="room_id">
-        @foreach ($roomnumbers as $number)
-        <option value="{{ $number->id }}"> Xonalar sonni {{ $number->number }} ta</option>
+      <label class="visually-hidden" for="room_id">{{ $items->nameUz }}</label>
+      <select class="form-select" name="category[]" id="{{ $items->nameUz.'_'.$items->id }}">
+        @foreach ($items->items as $value)
+        <option value="{{ $value->id }}">  {{ $value->nameUz }} </option>
         @endforeach
       </select>
     </div>
-    <div class="col-sm-3">
-      <label class="visually-hidden" for="bed_id">Divanlar soni</label>
-      <select class="form-select" name="bed_id" id="bed_id">
-        @foreach ($beds as $bed)
-        <option value="{{ $bed->id }}">Divanlar soni {{ $bed->number }} ta </option>
-        @endforeach
-      </select>
-    </div>
+    @endforeach
     <div class="col-auto">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="checkbox" id="autoSizingCheck2" value="1"{{ $room->checkbox ? 'checked' : '' }}>

@@ -20,7 +20,9 @@ class CreateMessagesTable extends Migration
             $table->string('phone');
             $table->text('forstday');
             $table->text('lastday');
-            $table->text('room_id');
+            $table->text('passport');
+            $table->text('room');
+            $table->text('check')->nullable();
             $table->timestamps();
         });
     }

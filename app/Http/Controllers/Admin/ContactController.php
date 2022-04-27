@@ -33,6 +33,7 @@ class ContactController extends Controller
      */
     public function create()
     {
+        
         return view('admin.contact.create');
     }
 
@@ -44,6 +45,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'email'=>'required',
+            'phone'=>'required',
+        ]);
         $this->ContactRepo->store($request);
         return redirect('/admin/contact');
     }
@@ -82,6 +87,11 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
+ 
+        $request->validate([
+            'email'=>'required',
+            'phone'=>'required',
+        ]);
         $this->ContactRepo->update($request, $id);
         return redirect('/admin/contact');
     }

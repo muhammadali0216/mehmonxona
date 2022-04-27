@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BedNumber;
-use App\Models\Catigory;
+use App\Http\Requests\RoomStoreRequest;
+use App\Models\Category;
 use App\Models\Room;
-use App\Models\RoomNumber;
 use App\Repositores\Interfaces\RoomRepositoreInterface;
 use Illuminate\Http\Request;
+use App\Models\ProductFilter;
 
 class RoomController extends Controller
 {
@@ -24,26 +24,28 @@ class RoomController extends Controller
         return $this->RoomRepo=$RoomRepositore;
     }
     public function index(Request $request){
-        $room=$request->room;
-        $bed=$request->bed;
-        $search=$request->search;
-        $beds=BedNumber::all();
-        $roomnumber=RoomNumber::all();
+        $categories=Category::all();
+        $key=$request->key;
+        $category=$request->category;
+        $ids=[];
+        if($category){
+                $filters=\App\Models\Category_item::find($request->category);
+                foreach ($filters as $filter) {
+                    foreach($filter->rooms as $room){
+                        array_push($ids, $room->id);
+                    }
+                }
+                $rooms=Room::whereIn('id',$ids)->paginate(10);
+        }else{
+            $rooms = Room::paginate(10);
+        }
+       
+        if($key >= 1){
+            $rooms=Room::where('titleUz','like', '%'.$key.'%')
+            ->orWhere('bodyUz','like', '%'.$key.'%')->get();
+        }
 
-        // $get=Room::Where('room_id',$room)->orWhere('bed_id',$bed)->get();
-        // $all=Room::all();
-        $rooms = Room::query();
-        if($bed){
-        $rooms = $rooms->where('bed_id',$bed);
-        }
-        if($room){
-        $rooms = $rooms->where('room_id',$room);
-        }
-        if($search){
-        $rooms = $rooms->where('title',$search)->orWhere('body',$search);
-        }
-        $rooms=$rooms->get();
-        return view('admin.rooms.index', compact('rooms','beds', 'roomnumber'));
+        return view('admin.rooms.index', compact('rooms','categories'));
     }
 
     /**
@@ -53,10 +55,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $roomnumbers=RoomNumber::all();
-        $beds=BedNumber::all();
-        $categories = Catigory::all();
-        return view('admin.rooms.create', compact('roomnumbers' ,'beds','categories'));
+        $categories = Category::all();
+        return view('admin.rooms.create', compact('categories'));
     }
 
     /**
@@ -65,9 +65,8 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoomStoreRequest $request)
     {
-        dd($request->all());
         $this->RoomRepo->store($request);
         return redirect('/admin/room');
     }
@@ -93,10 +92,9 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        $roomnumbers=RoomNumber::all();
-        $beds=BedNumber::all();
+        $categories=Category::all();
         $room=$this->RoomRepo->show($id);
-        return view('admin.rooms.update', compact('room', 'beds', 'roomnumbers'));
+        return view('admin.rooms.update', compact('room','categories'));
     }
 
     /**
@@ -108,8 +106,18 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'titleUz'=>'required',
+            'bodyUz'=>'required',
+            'titleEn'=>'required',
+            'bodyEn'=>'required',
+            'titleRu'=>'required',
+            'bodyEn'=>'required',
+            'price'=>'required',
+            'number'=>'required',
+        ]);
         $this->RoomRepo->update($request, $id);
-        return redirect('/admin');
+        return redirect('/admin/room');
     }
 
     /**
@@ -121,7 +129,7 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $this->RoomRepo->destroy($id);
-        return redirect('/admin');
+        return redirect('/admin/room');
     }
     
 }

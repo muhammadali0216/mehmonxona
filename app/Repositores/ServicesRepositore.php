@@ -5,6 +5,7 @@ namespace App\Repositores;
 use App\Models\Services;
 use App\Repositores\Interfaces\ServicesRepositoreInterface;
 
+
 class ServicesRepositore implements ServicesRepositoreInterface{
     public function all(){
         return Services::latest()->simplepaginate(5);
@@ -33,7 +34,7 @@ class ServicesRepositore implements ServicesRepositoreInterface{
             $imag->move('assets/img/', $imag_name);
             $data['photo']=$imag_name;
         }else{
-            $data['photo']=$old->photos;
+            $data['photo']=$old->photo;
         }
         $data['slug']=\Str::slug($request->price);
         

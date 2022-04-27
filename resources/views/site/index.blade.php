@@ -18,7 +18,7 @@
 @section('content')
     @include('site.sections.services')    
     @include('site.sections.latest')    
-    @include('site.sections.agents')    
+    {{-- @include('site.sections.agents')     --}}
     @include('site.sections.latest-news')    
     @include('site.sections.testimonials')    
 @endsection

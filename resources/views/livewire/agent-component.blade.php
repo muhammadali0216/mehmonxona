@@ -6,8 +6,7 @@
         <thead>
             <tr>
                 <th>Rasimlar</th>
-                <th>Ismi
-                Familya</th>
+                <th>Ismi Familya</th>
                 <th>Status</th>
                 <th>Tel Raqami</th>
                 <th>Email</th>

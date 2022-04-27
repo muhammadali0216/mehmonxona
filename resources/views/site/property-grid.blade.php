@@ -12,6 +12,6 @@
 
 <!-- Content -->
 @section('content')
-    @include('site.sections.intro-single')    
+    @include('site.sections.intro-single', ['h1'=>__('words.rooms'), 'span'=>'','layout'=>__('words.rooms')])    
     @include('site.sections.property-grid')    
 @endsection

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\BedNumber;
-use App\Models\RoomNumber;
+use App\Models\About;
+use App\Models\Contact;
+use App\Models\Room;
 use App\Repositores\AboutRepositore;
 use App\Repositores\AgentRepositore;
 use App\Repositores\ContactRepositore;
@@ -39,13 +40,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.siteLayoute', function($view){
-            $roomnumbers=RoomNumber::all();
-            $view->with(compact('roomnumbers'));
+        view()->composer('site.sections.intro', function($view){
+            $rooms=Room::where('checkbox','1')->get();
+            $view->with(compact('rooms'));
+        });
+        view()->composer('site.sections.about', function($view){
+            $about=About::first();
+            $view->with(compact('about'));
         });
         view()->composer('layouts.siteLayoute', function($view){
-            $beds=BedNumber::all();
-            $view->with(compact('beds'));
+            $contact=Contact::first();
+            $view->with(compact('contact'));
         });
     }
 }
